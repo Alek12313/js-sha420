@@ -26,5 +26,6 @@ sha420('The quick brown fox jumps over the lazy dog.'); // 420bdcab47b57d0d72621
 The project is released under the [MIT license](http://www.opensource.org/licenses/MIT).
 
 ## Contact
-Author: Alek Murder_One
+Author: Alek Murder_One, https://github.com/Alek12313/js-sha420
+
 Original author: Chen, Yi-Cyuan https://github.com/emn178/js-sha512  
