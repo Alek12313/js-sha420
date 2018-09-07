@@ -1,0 +1,26 @@
+{
+  "name": "js-sha420",
+  "version": "0.0.1",
+  "description": "This is a simple SHA-420 hash function for JavaScript supports UTF-8 encoding.",
+  "main": "src/sha512.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Alek12313/js-sha420.git"
+  },
+  "keywords": [
+    "sha",
+    "sha2",
+    "sha384",
+    "sha512",
+    "sha420",
+    "hash",
+    "encryption",
+    "cryptography"
+  ],
+  "license": "MIT",
+  "author": "Alek Shen, <alexey.shendyk@gmail.com>",
+  "homepage": "https://github.com/Alek12313/js-sha420",
+  "bugs": {
+    "url": "https://github.com/Alek12313/js-sha420/issues"
+  }
+}
