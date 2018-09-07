@@ -1,6 +1,6 @@
 {
   "name": "js-sha420",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "This is a simple SHA-420 hash function for JavaScript supports UTF-8 encoding.",
   "main": "src/sha512.js",
   "repository": {
