@@ -597,8 +597,7 @@
       h6h = this.h6h, h6l = this.h6l, h7h = this.h7h, h7l = this.h7l,
       bits = this.bits;
 
-    let hex = '420bdc';
-    let bdc = [];
+    let hex = '';
 
       hex +=
         HEX_CHARS[(h0h >> 20) & 0x0F] + HEX_CHARS[(h0h >> 16) & 0x0F] +
@@ -666,7 +665,7 @@
         HEX_CHARS[(h7l >> 4) & 0x0F] + HEX_CHARS[h7l & 0x0F];
 
       let magicString = hex;
-      let result;
+      let result = '420';
       let bdc1;
       let bdc2;
       let bdc3;
@@ -761,33 +760,39 @@
           x = "0x" + table.substr(y * 9, 8);
           crc = (crc >>> 8) ^ x;
         }
-
         return crc ^ (-1);
       }
 
-      for (let k = 0; k < 16; k++) {
+      for (let k = 0; k < 32; k++) {
         for (let k = 0; k < 32; k++) {
-          bdc1 = crc(magicString.substring(2, 4)).toString(16).substring(1);
-          bdc2 = crc(magicString.substring(16, 18)).toString(16).substring(1);
-          bdc3 = crc(magicString.substring(30, 55)).toString(16).substring(1);
-          bdc4 = crc(magicString.substring(11, 44)).toString(16).substring(1);
-          bdc5 = crc(magicString.substring(4, 6)).toString(16).substring(1);
-          bdc6 = crc(magicString.substring(47, 49)).toString(16).substring(1);
-          bdc7 = crc(magicString.substring(9, 33)).toString(16).substring(1);
-          bdc8 = crc(magicString.substring(17, 22)).toString(16).substring(1);
-          bdc9 = crc(magicString.substring(6, 8)).toString(16).substring(1);
-          bdc10 = crc(magicString.substring(25, 33)).toString(16).substring(1);
-          bdc11 = crc(magicString.substring(2, 35)).toString(16).substring(1);
-          bdc12 = crc(magicString.substring(3, 5)).toString(16).substring(1);
-          bdc13 = crc(magicString.substring(10, 12)).toString(16).substring(1);
-          bdc14 = crc(magicString.substring(4, 29)).toString(16).substring(1);
-          bdc15 = crc(magicString.substring(43, 45)).toString(16).substring(1);
-          bdc16 = crc(magicString.substring(1, 13)).toString(16).substring(1);
-          magicString = bdc1 + bdc2 + bdc3 + bdc4 + bdc5 + bdc6 + bdc7 + bdc8 + bdc9 + bdc10 + bdc11 + bdc12 + bdc13 + bdc14 + bdc15 + bdc16;
+          bdc1 = crc(HEX_CHARS[(h2l >> 28) & 0x0F] + magicString.substring(2, 4));
+          bdc2 = crc(HEX_CHARS[h3l & 0x0F] + magicString.substring(16, 18));
+          bdc3 = crc(HEX_CHARS[(h6l >> 24) & 0x0F] + magicString.substring(30, 55));
+          bdc4 = crc(HEX_CHARS[h2h & 0x0F] + magicString.substring(11, 44));
+          bdc5 = crc(HEX_CHARS[(h5l >> 28) & 0x0F] + magicString.substring(4, 6));
+          bdc6 = crc(HEX_CHARS[(h5l >> 8) & 0x0F] + magicString.substring(47, 49));
+          bdc7 = crc(HEX_CHARS[(h4l >> 24) & 0x0F] + magicString.substring(9, 33));
+          bdc8 = crc(HEX_CHARS[(h5l >> 20) & 0x0F] + magicString.substring(17, 22));
+          bdc9 = crc(HEX_CHARS[h2l & 0x0F] + magicString.substring(6, 8));
+          bdc10 = crc(HEX_CHARS[(h7l >> 12) & 0x0F] + magicString.substring(25, 33));
+          bdc11 = crc(HEX_CHARS[(h0h >> 12) & 0x0F] + magicString.substring(2, 35));
+          bdc12 = crc(HEX_CHARS[(h7h >> 8) & 0x0F] + magicString.substring(3, 5));
+          bdc13 = crc(HEX_CHARS[(h6l >> 12) & 0x0F] + magicString.substring(10, 12));
+          bdc14 = crc(HEX_CHARS[(h7h >> 20) & 0x0F] + magicString.substring(4, 29));
+          bdc15 = crc(HEX_CHARS[h2h & 0x0F] + magicString.substring(43, 45));
+          bdc16 = crc(HEX_CHARS[h7l & 0x0F] + magicString.substring(1, 13));
+          magicString = HEX_CHARS[(bdc1 >> 20) & 0x0F] + HEX_CHARS[(bdc2 >> 16) & 0x0F] +
+          HEX_CHARS[(bdc3 >> 12) & 0x0F] + HEX_CHARS[(bdc4 >> 8) & 0x0F] +
+          HEX_CHARS[(bdc5 >> 4) & 0x0F] + HEX_CHARS[bdc6 & 0x0F] +
+          HEX_CHARS[(bdc7 >> 28) & 0x0F] + HEX_CHARS[(bdc8 >> 24) & 0x0F] +
+          HEX_CHARS[(bdc9 >> 20) & 0x0F] + HEX_CHARS[(bdc10 >> 16) & 0x0F] +
+          HEX_CHARS[(bdc11 >> 12) & 0x0F] + HEX_CHARS[(bdc12 >> 8) & 0x0F] +
+          HEX_CHARS[(bdc13 >> 4) & 0x0F] + HEX_CHARS[bdc14 & 0x0F] +
+          HEX_CHARS[(bdc15 >> 28) & 0x0F] + HEX_CHARS[(bdc16 >> 24) & 0x0F];
         }
-        hex += magicString;
+        result += magicString;
       }
-      return hex.substring(0, 419);
+      return result.substring(0, 419);
   };
 
   let exports = createMethod(420);

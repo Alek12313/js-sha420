@@ -2,7 +2,7 @@
   "name": "js-sha420",
   "version": "0.0.2",
   "description": "This is a simple SHA-420 hash function for JavaScript supports UTF-8 encoding.",
-  "main": "src/sha512.js",
+  "main": "src/sha420.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/Alek12313/js-sha420.git"

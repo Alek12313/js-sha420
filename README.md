@@ -12,7 +12,7 @@ For node.js, you can use this command to install:
 ## Usage
 If you use node.js, you should require the module first:
 ```JavaScript
-const sha420 = require('./src/sha420');
+const sha420 = require('js-sha420');
 ```
 
 ## Example
